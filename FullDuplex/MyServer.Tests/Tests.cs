@@ -2,7 +2,6 @@
 using MyMessages;
 using NUnit.Framework;
 using NServiceBus.Testing;
-using NServiceBus;
 
 namespace MyServer.Tests
 {
@@ -16,7 +15,6 @@ namespace MyServer.Tests
 
             var dataId = Guid.NewGuid();
             var str = "hello";
-            WireEncryptedString secret = "secret";
 
             Test.Handler<RequestDataMessageHandler>()
                 .SetIncomingHeader("Test", "abc")

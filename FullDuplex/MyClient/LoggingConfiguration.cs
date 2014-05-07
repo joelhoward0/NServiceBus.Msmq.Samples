@@ -11,8 +11,8 @@ namespace MyClient
         {
             SetLoggingLibrary.Log4Net();
 
-            var appender = new ColoredConsoleAppender()
-            {
+            var appender = new ColoredConsoleAppender
+                {
                 Layout = new SimpleLayout(),
                 Threshold = Level.Debug
             };

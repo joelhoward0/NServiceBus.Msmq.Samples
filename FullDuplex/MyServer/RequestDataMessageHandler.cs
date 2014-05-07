@@ -23,11 +23,11 @@ namespace MyServer
             Logger.InfoFormat("Header 'Test' = {0}.", message.GetHeader("Test"));
             Logger.InfoFormat(Thread.CurrentPrincipal != null ? Thread.CurrentPrincipal.Identity.Name : string.Empty);
 
-            var response = Bus.CreateInstance<DataResponseMessage>(m => 
+            var response = new DataResponseMessage
             { 
-                m.DataId = message.DataId;
-                m.String = message.String;
-            });
+                DataId = message.DataId,
+                String = message.String
+            };
 
             Bus.SetMessageHeader(response, "Test", Bus.GetMessageHeader(message, "Test"));
             response.SetHeader("1", "1");
