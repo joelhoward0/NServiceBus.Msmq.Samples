@@ -1,8 +1,6 @@
 ﻿namespace MyServerWithSLR
 {
-    using System;
     using NServiceBus;
-    using NServiceBus.SecondLevelRetries.Helpers;
 
     public class ChangeRetryPolicy : INeedInitialization
     {

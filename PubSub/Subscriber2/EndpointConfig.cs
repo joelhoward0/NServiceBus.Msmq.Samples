@@ -13,7 +13,7 @@ namespace Subscriber2
             Configure.With()
                 //this overrides the NServiceBus default convention of IEvent
                      .DefiningEventsAs(t => t.Namespace != null && t.Namespace.StartsWith("MyMessages"))
-                     .CastleWindsorBuilder(); // just to show we can mix and match containers
+                     .DefaultBuilder(); 
         }
     }
 }

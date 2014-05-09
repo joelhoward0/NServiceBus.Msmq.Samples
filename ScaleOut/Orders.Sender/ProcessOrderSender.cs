@@ -15,7 +15,7 @@ namespace Orders.Sender
             while (Console.ReadLine() != null)
             {
                 counter++;
-                var placeOrder = new PlaceOrder() { OrderId = "order" + counter};
+                var placeOrder = new PlaceOrder { OrderId = "order" + counter};
                 Bus.Send(placeOrder).Register(PlaceOrderReturnCodeHandler, this);
                 Console.WriteLine(string.Format("Sent PlacedOrder command with order id [{0}].", placeOrder.OrderId));
             }
