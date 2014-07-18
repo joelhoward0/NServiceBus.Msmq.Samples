@@ -59,8 +59,6 @@
     </Compile>
     <Compile Include="EndpointConfig.cs" />
     <Compile Include="OrderAcceptedHandler.cs" />
-    <Compile Include="SendLimitedTimeOffer.cs" />
-    <Compile Include="SendWelcomePacket.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
