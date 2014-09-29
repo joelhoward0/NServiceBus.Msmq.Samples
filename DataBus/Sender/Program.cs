@@ -14,15 +14,15 @@ class Program
         busConfiguration.FileShareDataBus(BasePath);
         busConfiguration.UsePersistence<InMemoryPersistence>();
         busConfiguration.EnableInstallers();
-        var startableBus = Bus.Create(busConfiguration);
-        using (var bus = startableBus.Start())
+        using (var bus = Bus.Create(busConfiguration))
         {
-            Start(bus);
+            bus.Start();
+            Run(bus);
         }
     }
 
 
-    static void Start(IBus bus)
+    static void Run(IBus bus)
     {
         Console.WriteLine("Press 'Enter' to send a large message (>4MB)");
         Console.WriteLine("Press 'E' to send a message that will exceed the limit and throw");

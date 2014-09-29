@@ -1,14 +1,11 @@
-﻿namespace MyClient
-{
-    using System;
-    using MyMessages;
-    using NServiceBus;
+﻿using System;
+using MyMessages;
+using NServiceBus;
 
-    class DataResponseMessageHandler : IHandleMessages<DataResponseMessage>
+class DataResponseMessageHandler : IHandleMessages<DataResponseMessage>
+{
+    public void Handle(DataResponseMessage message)
     {
-        public void Handle(DataResponseMessage message)
-        {
-            Console.WriteLine("Response received with description: {0}", message.String);
-        }
+        Console.WriteLine("Response received with description: {0}", message.String);
     }
 }

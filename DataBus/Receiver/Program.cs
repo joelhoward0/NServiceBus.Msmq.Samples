@@ -4,6 +4,7 @@ using NServiceBus;
 class Program
 {
     static string BasePath = "..\\..\\..\\storage";
+
     static void Main()
     {
         var busConfiguration = new BusConfiguration();
@@ -12,9 +13,9 @@ class Program
         busConfiguration.FileShareDataBus(BasePath);
         busConfiguration.UsePersistence<InMemoryPersistence>();
         busConfiguration.EnableInstallers();
-        var startableBus = Bus.Create(busConfiguration);
-        using (startableBus.Start())
+        using (var bus = Bus.Create(busConfiguration))
         {
+            bus.Start();
             Console.WriteLine("\r\nPress enter key to stop program\r\n");
             Console.Read();
         }
