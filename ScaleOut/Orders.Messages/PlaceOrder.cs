@@ -1,6 +1,4 @@
-﻿using NServiceBus;
-
-namespace Orders.Commands
+﻿namespace Orders.Commands
 {
     public class PlaceOrder
     {
