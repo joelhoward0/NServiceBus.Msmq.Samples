@@ -1,6 +1,7 @@
 using System;
 using MyMessages;
 using NServiceBus;
+using NServiceBus.Features;
 
 static class Program
 {
@@ -10,6 +11,7 @@ static class Program
         var busConfiguration = new BusConfiguration();
         busConfiguration.EndpointName("Sample.PubSub.Subscriber2");
         busConfiguration.UseSerialization<JsonSerializer>();
+        busConfiguration.DisableFeature<AutoSubscribe>();
         busConfiguration.UsePersistence<InMemoryPersistence>();
         busConfiguration.EnableInstallers();
         var startableBus = Bus.Create(busConfiguration);
