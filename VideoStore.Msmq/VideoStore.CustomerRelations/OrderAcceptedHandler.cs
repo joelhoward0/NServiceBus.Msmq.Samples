@@ -16,7 +16,7 @@
                 Debugger.Break();
             }
 
-            Console.WriteLine("Customer: {0} is now a preferred customer. Publishing this event for interested subscribers", message.ClientId);
+            Console.WriteLine("Customer: {0} is now a preferred customer publishing for other service concerns", message.ClientId);
 
             // publish this event as an asynchronous event
             Bus.Publish<ClientBecamePreferred>(m =>

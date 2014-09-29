@@ -32,6 +32,7 @@ This sample implements the following worflow of a fictional video store. Users c
 
 
 - The Sales endpoint illustrates the use of the Saga pattern to handle the buyer's remorse scenario.  
+The CustomerRelations endpoint illustrates how in-memory events (domain events pattern) can be defined and subscribed to.
 
 - The request/response pattern is illustrated for the video provisioning between the ContentManagement endpoint and the Operations Endpoint.
 The ECommerce endpoint is implemented as an ASP.NET MVC4 application which uses SignalR to show feedback to the user. 

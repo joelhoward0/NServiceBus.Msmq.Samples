@@ -1,15 +1,11 @@
-﻿using NServiceBus;
-using NServiceBus.Config;
-using NServiceBus.Installation.Environments;
-
-namespace SiteB
+﻿namespace SiteB
 {
-    internal class RunInstallers : IWantToRunWhenConfigurationIsComplete
+    using NServiceBus;
+    internal class RunInstallers : INeedInitialization
     {
-        public void Run()
+        public void Customize(BusConfiguration configuration)
         {
-            //run the installers to  make sure that all queues are created
-            Configure.Instance.ForInstallationOn<Windows>().Install();
+            configuration.EnableInstallers();
         }
     }
 }

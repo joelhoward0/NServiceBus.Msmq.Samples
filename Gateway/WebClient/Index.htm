@@ -18,7 +18,7 @@
                     url: $('#gatewayaddress').val(),
                     data: {
                         Message: message,
-                        "NServiceBus.CallType": "Submit",
+                        "NServiceBus.CallType": "SingleCallSubmit",
                         "NServiceBus.AutoAck": "true",
                         "Content-MD5": md5,
                         "NServiceBus.Id": clientId,

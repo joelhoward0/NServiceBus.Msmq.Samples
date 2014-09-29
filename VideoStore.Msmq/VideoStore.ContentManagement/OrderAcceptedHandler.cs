@@ -9,7 +9,6 @@
 
     public class OrderAcceptedHandler : IHandleMessages<OrderAccepted>
     {
-        
 
         public IBus Bus { get; set; }
 

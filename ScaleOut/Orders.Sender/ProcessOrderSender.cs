@@ -1,9 +1,10 @@
-﻿using System;
-using NServiceBus;
-using Orders.Messages;
-
-namespace Orders.Sender
+﻿namespace Orders.Sender
 {
+    using System;
+    using NServiceBus;
+    using Orders.Commands;
+    using Orders.Messages;
+
     class ProcessOrderSender : IWantToRunWhenBusStartsAndStops
     {
         public IBus Bus { get; set; }

@@ -1,9 +1,9 @@
-﻿using System;
-using MyMessages;
-using NServiceBus;
-
-namespace MyClient
+﻿namespace MyClient
 {
+    using System;
+    using MyMessages;
+    using NServiceBus;
+
     class DataResponseMessageHandler : IHandleMessages<DataResponseMessage>
     {
         public void Handle(DataResponseMessage message)

@@ -1,35 +1,29 @@
 ﻿namespace SiteB
 {
     using System;
+    using System.Diagnostics;
     using NServiceBus;
+    using NServiceBus.Features;
 
     class Program
     {
         static void Main()
         {
-            Configure.With()
-                .DefaultBuilder()
-                .UseTransport<Msmq>()
-                .UnicastBus()
-                .FileShareDataBus(".\\databus")
-                .UseInMemoryTimeoutPersister()
-                .RunGateway() //this line configures the gateway
 
-                    // This tells NServiceBus to use memory to persist & deduplicate messages arriving from NServiceBus v3.X.
-                    // If omitted, RavenDB will be used by default. Required for backwards compatibility
-                    .UseInMemoryGatewayPersister()
+            var config = new BusConfiguration();
+            // For production use, please select a durable persistence.
+            // To use RavenDB, install-package NServiceBus.RavenDB and then use configuration.UsePersistence<RavenDBPersistence>();
+            // To use SQLServer, install-package NServiceBus.NHibernate and then use configuration.UsePersistence<NHibernatePersistence>();
+            if (Debugger.IsAttached)
+            {
+                config.UsePersistence<InMemoryPersistence>();
+            }
+            config.UseTransport<MsmqTransport>();
+            config.FileShareDataBus(".\\databus");
+            config.EnableFeature<Gateway>();
 
-                    // This tells NServiceBus to use memory to deduplicate message ids arriving from NServiceBus v4.X.
-                    // If omitted, RavenDB will be used by default
-                    .UseInMemoryGatewayDeduplication()
-
-                // Uncomment lines below to use NHibernate persister & deduplication for gateway messages
-                // (create a new database called gateway in \SQLEXPRESS - see App.config for connection strings and other settings)
-                //    .UseNHibernateGatewayPersister()
-                //    .UseNHibernateGatewayDeduplication()
-
-                .CreateBus()
-                .Start();
+            var bus = Bus.Create(config);
+            bus.Start();
 
             Console.WriteLine("Waiting for price updates from the headquarter - press any key to exit");
 

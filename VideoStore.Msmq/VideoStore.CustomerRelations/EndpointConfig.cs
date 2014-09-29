@@ -1,20 +1,24 @@
 ﻿namespace VideoStore.CustomerRelations
 {
-    using System;
+    using System.Diagnostics;
     using NServiceBus;
 
-    public class EndpointConfig : IConfigureThisEndpoint, AsA_Publisher, UsingTransport<Msmq> { }
-
-    public class MyClass : IWantToRunWhenBusStartsAndStops
+    public class EndpointConfig : IConfigureThisEndpoint, AsA_Server, UsingTransport<MsmqTransport>
     {
-        public void Start()
+        public void Customize(BusConfiguration configuration)
         {
-            Console.Out.WriteLine("The VideoStore.CustomerRelations endpoint is now started and subscribed to events from VideoStore.Sales");
-        }
-
-        public void Stop()
-        {
-
+            // For production use, please select a durable persistence.
+            // To use RavenDB, install-package NServiceBus.RavenDB and then use configuration.UsePersistence<RavenDBPersistence>();
+            // To use SQLServer, install-package NServiceBus.NHibernate and then use configuration.UsePersistence<NHibernatePersistence>();
+            if (Debugger.IsAttached)
+            {
+                configuration.UsePersistence<InMemoryPersistence>();
+            } 
+            configuration.RijndaelEncryptionService();
+            configuration.Conventions()
+                .DefiningCommandsAs(t => t.Namespace != null && t.Namespace.StartsWith("VideoStore") && t.Namespace.EndsWith("Commands"))
+                .DefiningEventsAs(t => t.Namespace != null && t.Namespace.StartsWith("VideoStore") && t.Namespace.EndsWith("Events"))
+                .DefiningMessagesAs(t => t.Namespace != null && t.Namespace.StartsWith("VideoStore") && t.Namespace.EndsWith("RequestResponse"));
         }
     }
 }

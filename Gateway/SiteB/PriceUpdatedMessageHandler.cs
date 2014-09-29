@@ -1,9 +1,8 @@
-﻿using System;
-using Headquarter.Messages;
-using NServiceBus;
-
-namespace SiteB
+﻿namespace SiteB
 {
+    using System;
+    using Headquarter.Messages;
+    using NServiceBus;
     public class PriceUpdatedMessageHandler : IHandleMessages<PriceUpdated>
     {
         public void Handle(PriceUpdated message)
