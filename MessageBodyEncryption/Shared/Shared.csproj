@@ -46,7 +46,7 @@
     <Compile Include="BusConfigExtensions.cs" />
     <Compile Include="CompleteOrder.cs" />
     <Compile Include="ConfigErrorQueue.cs" />
-    <Compile Include="TransportEncryptor.cs" />
+    <Compile Include="MessageEncryptor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
