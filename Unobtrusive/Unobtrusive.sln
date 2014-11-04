@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Events", "Events\Events.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "Messages\Messages.csproj", "{DD0DC12D-D6DF-47C0-B75A-AEC351164196}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedConventions", "SharedConventions\SharedConventions.csproj", "{7A8901F7-8DC9-4A48-8A9F-422AA1ACEA80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{DD0DC12D-D6DF-47C0-B75A-AEC351164196}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD0DC12D-D6DF-47C0-B75A-AEC351164196}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD0DC12D-D6DF-47C0-B75A-AEC351164196}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A8901F7-8DC9-4A48-8A9F-422AA1ACEA80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A8901F7-8DC9-4A48-8A9F-422AA1ACEA80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A8901F7-8DC9-4A48-8A9F-422AA1ACEA80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A8901F7-8DC9-4A48-8A9F-422AA1ACEA80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

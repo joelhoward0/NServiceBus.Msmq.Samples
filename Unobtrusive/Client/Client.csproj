@@ -38,14 +38,8 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NServiceBus">
-      <HintPath>..\..\..\binaries\NServiceBus.dll</HintPath>
-    </Reference>
     <Reference Include="NServiceBus.Core">
       <HintPath>..\packages\NServiceBus.5.1.0\lib\net45\NServiceBus.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus.Host">
-      <HintPath>..\..\..\binaries\NServiceBus.Host.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -76,6 +70,10 @@
     <ProjectReference Include="..\Messages\Messages.csproj">
       <Project>{DD0DC12D-D6DF-47C0-B75A-AEC351164196}</Project>
       <Name>Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharedConventions\SharedConventions.csproj">
+      <Project>{7A8901F7-8DC9-4A48-8A9F-422AA1ACEA80}</Project>
+      <Name>SharedConventions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

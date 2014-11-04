@@ -75,6 +75,10 @@
       <Project>{DD0DC12D-D6DF-47C0-B75A-AEC351164196}</Project>
       <Name>Messages</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SharedConventions\SharedConventions.csproj">
+      <Project>{7A8901F7-8DC9-4A48-8A9F-422AA1ACEA80}</Project>
+      <Name>SharedConventions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
