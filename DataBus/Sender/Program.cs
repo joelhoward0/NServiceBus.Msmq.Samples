@@ -11,7 +11,7 @@ class Program
         var busConfiguration = new BusConfiguration();
         busConfiguration.EndpointName("Sample.DataBus.Sender");
         busConfiguration.UseSerialization<JsonSerializer>();
-        busConfiguration.FileShareDataBus(BasePath);
+        busConfiguration.UseDataBus<FileShareDataBus>().BasePath(BasePath);
         busConfiguration.UsePersistence<InMemoryPersistence>();
         busConfiguration.EnableInstallers();
         using (var bus = Bus.Create(busConfiguration))

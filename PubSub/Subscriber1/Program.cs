@@ -1,6 +1,4 @@
 using System;
-using MyMessages;
-using MyMessages.Other;
 using NServiceBus;
 
 static class Program
