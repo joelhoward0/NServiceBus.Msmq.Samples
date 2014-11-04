@@ -1,10 +1,12 @@
-﻿using System;
-using NServiceBus;
+﻿using NServiceBus;
+using NServiceBus.Logging;
 
 public class Handler : IHandleMessages<CreateProductCommand>
 {
+    static ILog Log = LogManager.GetLogger<Handler>();
+
     public void Handle(CreateProductCommand createProductCommand)
     {
-        Console.WriteLine("Received a CreateProductCommand message: " + createProductCommand);
+        Log.Info("Received a CreateProductCommand message: " + createProductCommand);
     }
 }

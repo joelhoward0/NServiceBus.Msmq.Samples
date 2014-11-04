@@ -11,29 +11,37 @@ public class Runner
 
         while ((cmd = Console.ReadKey().Key.ToString().ToLower()) != "q")
         {
+            Console.WriteLine();
             switch (cmd)
             {
                 case "s":
                     bus.SendLocal(new CreateProductCommand
-                    {
-                        ProductId = "XJ128",
-                        ProductName = "Milk",
-                        ListPrice = 4,
-                        // 7MB. MSMQ should throw an exception, but it will not since the buffer will be compressed 
-                        // before it reaches MSMQ.
-                        Image = new byte[1024*1024*7]
-                    });
+                                  {
+                                      ProductId = "XJ128",
+                                      ProductName = "Milk",
+                                      ListPrice = 4,
+                                      // 7MB. MSMQ should throw an exception, but it will not since the buffer will be compressed 
+                                      // before it reaches MSMQ.
+                                      Image = new byte[1024*1024*7]
+                                  });
                     break;
                 case "e":
-                    bus.SendLocal(new CreateProductCommand
-                        {
-                            ProductId = "XJ128",
-                            ProductName = "Milk Milk Milk Milk Milk",
-                            ListPrice = 15,
-                            // 7MB. MSMQ should throw an exception, but it will not since the buffer will be compressed 
-                            // before it reaches MSMQ.
-                            Image = new byte[1024*1024*7]
-                        });
+                    try
+                    {
+                        bus.SendLocal(new CreateProductCommand
+                                      {
+                                          ProductId = "XJ128",
+                                          ProductName = "Milk Milk Milk Milk Milk",
+                                          ListPrice = 15,
+                                          // 7MB. MSMQ should throw an exception, but it will not since the buffer will be compressed 
+                                          // before it reaches MSMQ.
+                                          Image = new byte[1024*1024*7]
+                                      });
+                    }
+                    catch
+                    {
+                        //so the console keeps on running   
+                    }
                     break;
             }
         }
