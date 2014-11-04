@@ -49,7 +49,10 @@ public class CommandSender
     /// </summary>
     static void Expiration(IBus bus)
     {
-        bus.Send<MessageThatExpires>(m => m.RequestId = new Guid());
+        bus.Send(new MessageThatExpires
+                 {
+                     RequestId = new Guid()
+                 });
         Console.WriteLine("message with expiration was sent");
     }
 
@@ -57,10 +60,10 @@ public class CommandSender
     {
         var requestId = Guid.NewGuid();
 
-        bus.Send<LargeMessage>(m =>
+        bus.Send(new LargeMessage
         {
-            m.RequestId = requestId;
-            m.LargeDataBus = new byte[1024*1024*5];
+            RequestId = requestId,
+            LargeDataBus = new byte[1024*1024*5]
         });
 
         Console.WriteLine("Request sent id: " + requestId);
@@ -70,9 +73,9 @@ public class CommandSender
     {
         var requestId = Guid.NewGuid();
 
-        bus.Send<RequestExpress>(m =>
+        bus.Send(new RequestExpress
         {
-            m.RequestId = requestId;
+            RequestId = requestId
         });
 
         Console.WriteLine("Request sent id: " + requestId);
@@ -82,9 +85,9 @@ public class CommandSender
     {
         var requestId = Guid.NewGuid();
 
-        bus.Send<Request>(m =>
+        bus.Send(new Request
         {
-            m.RequestId = requestId;
+            RequestId = requestId
         });
 
         Console.WriteLine("Request sent id: " + requestId);
@@ -94,11 +97,11 @@ public class CommandSender
     {
         var commandId = Guid.NewGuid();
 
-        bus.Send<MyCommand>(m =>
-        {
-            m.CommandId = commandId;
-            m.EncryptedString = "Some sensitive information";
-        })
+        bus.Send(new MyCommand
+                 {
+                     CommandId = commandId,
+                     EncryptedString = "Some sensitive information"
+                 })
             .Register<CommandStatus>(outcome => Console.WriteLine("Server returned status: " + outcome));
 
         Console.WriteLine("Command sent id: " + commandId);
