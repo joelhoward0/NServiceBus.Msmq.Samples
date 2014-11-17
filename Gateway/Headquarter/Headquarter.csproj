@@ -69,6 +69,6 @@
   <PropertyGroup>
     <StartAction>Program</StartAction>
     <StartProgram>$(ProjectDir)$(OutputPath)NServiceBus.Host.exe</StartProgram>
-    <StartArguments>NServiceBus.Lite NServiceBus.MultiSite</StartArguments>
+    <StartArguments>NServiceBus.Lite</StartArguments>
   </PropertyGroup>
 </Project>
